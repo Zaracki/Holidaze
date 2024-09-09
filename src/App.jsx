@@ -1,9 +1,14 @@
 import './index.css'; 
+import Navbar from "./comonents/Navbar";
 
 function App() {
 
   return (
-    <h1 className="text-xl font-bold text-blue-900">HELLO</h1>
+    <>
+      <Navbar />
+      <h1 className="text-xl font-bold text-blue-900">HELLO</h1>
+    </>
+
   )
 }
 
