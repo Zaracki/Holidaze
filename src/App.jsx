@@ -7,6 +7,7 @@ function App() {
     <>
       <Navbar />
       <h1 className="text-xl font-bold text-blue-900">HELLO</h1>
+      
     </>
 
   )
