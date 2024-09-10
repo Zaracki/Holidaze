@@ -1,4 +1,4 @@
-import { PrimaryButton } from '../../comonents/PrimaryButton';
+import PrimaryButton  from '../../comonents/PrimaryButton';
 import { VenueCard } from '../../comonents/Cards/VenueCard';
 
 export const Home = () => {
@@ -31,7 +31,5 @@ export const Home = () => {
       </div>
       <VenueCard />
     </>
-
-
   );
 };
