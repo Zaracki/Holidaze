@@ -12,7 +12,7 @@ export const Register = () => {
     <>
       <div className="min-h-screen flex items-center justify-center bg-[#141414]">
         <div className="w-[632px] bg-[#282828] p-8">
-          <h1 className="text-3xl font-bold mb-6 text-center text-white">Sign Up</h1>
+          <h1 className="text-3xl font-bold mb-6 text-white">Sign Up</h1>
           <form className="space-y-4">
             <div>
               <h2 className="text-lg text-white font-semibold">Name</h2>
@@ -60,13 +60,13 @@ export const Register = () => {
             </div>
             <div className="mt-8">
               <PrimaryButton className="ml-0 w-full" type="submit">
-                Sign Up
+                Create account
               </PrimaryButton>
             </div>
             <p className="text-[#D2D2D2] mt-4">
               Already have an account?{' '}
               <a href="#" className="text-white hover:underline">
-                Login
+                Sign in
               </a>
             </p>
           </form>

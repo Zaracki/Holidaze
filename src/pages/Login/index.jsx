@@ -5,7 +5,7 @@ export const Login = () => {
     <>
       <div className="min-h-screen flex items-center justify-center bg-[#141414]">
         <div className="w-[632px] bg-[#282828] p-8">
-          <h1 className="text-3xl font-bold mb-6 text-center text-white">Login</h1>
+          <h1 className="text-3xl font-bold mb-6 text-white">Sign in</h1>
           <form className="space-y-4">
             <div>
               <h2 className="text-lg text-white font-semibold">Your Email</h2>
@@ -27,7 +27,7 @@ export const Login = () => {
               <PrimaryButton
               className="ml-0 w-full"
               type="submit">
-                Login
+                Sign in
               </PrimaryButton>
             </div>
             <p className="text-[#D2D2D2] mt-4">

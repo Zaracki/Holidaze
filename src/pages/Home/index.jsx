@@ -3,12 +3,12 @@ import { VenueCard } from '../../comonents/Cards/VenueCard';
 
 export const Home = () => {
   return (
-    <>
+<>
       <div className="relative">
         <img
           src="src/assets/hero-image.png"
           alt="Hero"
-          className="w-full max-w-[1440px] max-h-[500px] object-cover mx-auto"
+          className="w-full h-[500px] object-cover mx-auto"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
           <h1 className="text-white text-4xl md:text-5xl font-bold mb-4 tracking-wide text-[#DAB674]">
