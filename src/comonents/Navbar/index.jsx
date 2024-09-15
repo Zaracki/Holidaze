@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 h-16 px-4 flex items-center relative z-50">
+    <nav className="bg-[#141414] h-16 px-4 flex items-center relative z-50">
       <div className="container mx-auto max-w-[1152px] flex items-center justify-between">
         <div className="text-white text-2xl font-bold">
           H
@@ -41,9 +41,11 @@ const Navbar = () => {
               </PrimaryButton>
             </Link>            
           </li>
-          <button className="h-[39px] px-[22px] py-2.5 ml-4 hover:bg-[#ad974f] justify-center items-center gap-2.5 inline-flex hover:text-white text-base font-bold font-['SF Pro'] tracking-widest border-2 border-[#dab674] hover:px-[20px] bg-transparent text-[#dab674] hover:border-none hover:px-[24px]">
-            Register
-          </button>
+          <Link to="/Register">
+              <PrimaryButton>
+                Register
+              </PrimaryButton>
+            </Link>   
         </ul>
 
         {isOpen && (
