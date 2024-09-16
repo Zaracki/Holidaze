@@ -1,9 +1,9 @@
-import PrimaryButton  from '../../comonents/PrimaryButton';
+import PrimaryButton from '../../comonents/PrimaryButton';
 import { VenueCard } from '../../comonents/Cards/VenueCard';
 
 export const Home = () => {
   return (
-<>
+    <>
       <div className="relative">
         <img
           src="src/assets/hero-image.png"
@@ -23,13 +23,20 @@ export const Home = () => {
               placeholder="Search for your getaway..."
               className="flex-1 h-10 px-4 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <PrimaryButton className="ml-1">
-              Search
-            </PrimaryButton>
+            <PrimaryButton className="ml-1">Search</PrimaryButton>
           </div>
         </div>
       </div>
-      <VenueCard />
+      <div className="mx-auto mt-10 max-w-[1152px] w-full px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+          <VenueCard />
+          <VenueCard />
+          <VenueCard />
+          <VenueCard />
+          <VenueCard />
+          <VenueCard />
+        </div>
+      </div>
     </>
   );
 };
