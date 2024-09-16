@@ -34,6 +34,11 @@ const Navbar = () => {
               About
             </Link>
           </li>
+          <li className="text-white hover:text-gray-400">
+            <Link to="/Profile">
+              Profile
+            </Link>
+          </li>
           <li>
             <Link to="/Login">
               <PrimaryButton>

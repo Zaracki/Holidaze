@@ -85,7 +85,7 @@ export const Venue = () => {
                 type="date"
                 id="date-from"
                 name="date-from"
-                className="w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-md"
+                className="w-full p-2 border border-gray-600 bg-white text-grey rounded-md"
               />
             </div>
             <div className="mb-4">
@@ -96,7 +96,7 @@ export const Venue = () => {
                 type="date"
                 id="date-to"
                 name="date-to"
-                className="w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-md"
+                className="w-full p-2 border border-gray-600 bg-white text-grey rounded-md"
               />
             </div>
             <div className="mb-4">

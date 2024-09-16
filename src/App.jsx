@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Layout } from './comonents/Layout';
 import { Venue } from './pages/Venue';
+import { Profile } from './pages/Profile';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Login" element={<Login />}/>
           <Route path="/Register" element={<Register />}/>
           <Route path="/Venue" element={<Venue />}/>
+          <Route path="/Profile" element={<Profile />}/>
         </Route>
       </Routes>
     </>
