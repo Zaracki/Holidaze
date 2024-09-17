@@ -1,5 +1,5 @@
 import React from 'react';
-import PrimaryButton from '../../comonents/PrimaryButton';
+import PrimaryButton from '../../components/PrimaryButton';
 
 export const Venue = () => {
   return (
