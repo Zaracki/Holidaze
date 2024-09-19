@@ -1,8 +1,8 @@
-import PrimaryButton from '../../comonents/PrimaryButton';
+import PrimaryButton from '../../components/PrimaryButton';
 import React, { useState } from 'react'; 
 import { API_URL } from '../../common/Constants';
-import { useFetch } from '../../comonents/hooks/useFetch';
-import { VenueList } from '../../comonents/VenueList';
+import { useFetch } from '../../components/hooks/useFetch';
+import { VenueList } from '../../components/VenueList';
 
 export const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');

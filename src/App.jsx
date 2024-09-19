@@ -4,7 +4,7 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { Layout } from './comonents/Layout';
+import { Layout } from './components/Layout';
 import { Venue } from './pages/Venue';
 import { Profile } from './pages/Profile';
 
