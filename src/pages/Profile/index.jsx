@@ -45,7 +45,7 @@ export const Profile = () => {
     };
   
     // Make the PUT request to update the user profile
-    await postData(`${API_BASE_URL}/holidaze/profiles/${name}`, updatedProfileData, 'PUT', {
+    await postData(`${API_BASE_URL}/profiles/${name}`, updatedProfileData, 'PUT', {
       Authorization: `Bearer ${token}`,
       'X-Noroff-API-Key': apiKey,  // Add the API key header
     });
