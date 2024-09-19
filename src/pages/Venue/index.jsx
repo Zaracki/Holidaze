@@ -3,6 +3,7 @@ import PrimaryButton from '../../components/PrimaryButton';
 import { useParams } from 'react-router-dom';
 import { API_URL } from '../../common/Constants';
 import useFetch from '../../components/hooks/useFetch';
+import MetaSelect from '../../components/MetaSelect'; 
 
 export const Venue = () => {
   const { id } = useParams();
@@ -22,7 +23,6 @@ export const Venue = () => {
 
   const venue = data.data;
   const { name, description, media, price, owner, meta, location, bookings } = venue;
-
 
   return (
     <div className="bg-black min-h-screen flex flex-col items-center px-10">
@@ -56,50 +56,35 @@ export const Venue = () => {
             <hr className="mt-3 mb-3 border-gray-600" />
             <p className="mt-2">{description || 'Venue description goes here.'}</p>
             <hr className="mt-3 mb-3 border-gray-600" />
-            <div className="flex items-center mt-4">
-              <img
-                src="/path-to-wifi-icon.png"
-                alt="WiFi"
-                className="w-6 h-6"
-              />
-              <div className="ml-4">
-                <h3 className="text-lg font-medium">WiFi</h3>
-                <p>{meta?.wifi ? 'High-speed internet throughout the property' : 'No WiFi available'}</p>
-              </div>
-            </div>
-            <div className="flex items-center mt-4">
-              <img
-                src="/path-to-pets-icon.png"
-                alt="Pets"
-                className="w-6 h-6"
-              />
-              <div className="ml-4">
-                <h3 className="text-lg font-medium">Pets</h3>
-                <p>{meta?.pets ? 'Pets allowed' : 'No pets allowed'}</p>
-              </div>
-            </div>
-            <div className="flex items-center mt-4">
-              <img
-                src="/path-to-parking-icon.png"
-                alt="Parking"
-                className="w-6 h-6"
-              />
-              <div className="ml-4">
-                <h3 className="text-lg font-medium">Parking</h3>
-                <p>{meta?.parking ? 'Parking available' : 'No parking available'}</p>
-              </div>
-            </div>
-            <div className="flex items-center mt-4">
-              <img
-                src="/path-to-breakfast-icon.png"
-                alt="Breakfast"
-                className="w-6 h-6"
-              />
-              <div className="ml-4">
-                <h3 className="text-lg font-medium">Breakfast</h3>
-                <p>{meta?.breakfast ? 'Breakfast included' : 'No breakfast available'}</p>
-              </div>
-            </div>
+
+            <MetaSelect
+              iconPath="/path-to-wifi-icon.png"
+              label="WiFi"
+              isEnabled={meta?.wifi}
+              description="High-speed internet throughout the property"
+            />
+            
+            <MetaSelect
+              iconPath="/path-to-pets-icon.png"
+              label="Pets"
+              isEnabled={meta?.pets}
+              description="Pets allowed"
+            />
+            
+            <MetaSelect
+              iconPath="/path-to-parking-icon.png"
+              label="Parking"
+              isEnabled={meta?.parking}
+              description="Parking available"
+            />
+
+            <MetaSelect
+              iconPath="/path-to-breakfast-icon.png"
+              label="Breakfast"
+              isEnabled={meta?.breakfast}
+              description="Breakfast included"
+            />
+
           </div>
         </div>
         <div className="w-full md:w-[400px] p-4 bg-[#282828] mt-8 md:mt-0 md:ml-8 rounded-md">

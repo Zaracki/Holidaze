@@ -3,7 +3,7 @@ import PrimaryButton from '../../components/PrimaryButton';
 import InputField from '../../components/InputField';
 import FormLayout from '../../components/FormLayout';
 import { useForm } from '../../components/hooks/useForm';
-import { usePost } from '../../components/hooks/usePost';
+import { useHttp } from '../../components/hooks/useHttp';
 import { API_URL_LOGIN } from '../../common/Constants';
 import { saveUserData } from '../../utils/LocalStorage';
 
@@ -13,11 +13,11 @@ export const Login = () => {
     password: '',
   });
 
-  const { postData, loading, error, success, data } = usePost();
+  const { sendRequest, loading, error, success, data } = useHttp();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postData(API_URL_LOGIN, formData);
+    sendRequest(API_URL_LOGIN, 'POST', formData);
   };
 
   React.useEffect(() => {

@@ -1,6 +1,6 @@
 import PrimaryButton from '../../components/PrimaryButton';
 import React, { useState } from 'react'; 
-import { API_URL, API_URL_CREATE_API_KEY } from '../../common/Constants';
+import { API_URL } from '../../common/Constants';
 import { useFetch } from '../../components/hooks/useFetch';
 import { VenueList } from '../../components/VenueList';
 

@@ -2,64 +2,51 @@ import React, { useEffect, useState } from 'react';
 import PrimaryButton from '../../components/PrimaryButton';
 import InputField from '../../components/InputField';
 import { getUserData, saveUserData } from '../../utils/LocalStorage';
-import { usePost } from '../../components/hooks/usePost';
+import { useHttp } from '../../components/hooks/useHttp';
 import { API_BASE_URL } from '../../common/Constants';
 
 export const Profile = () => {
   const [userData, setUserData] = useState({});
-  const [isEditing, setIsEditing] = useState(false);  // Toggle input field
-  const [newAvatarUrl, setNewAvatarUrl] = useState(''); // Store new avatar URL
-  const { postData, loading, success, error } = usePost();
+  const [newAvatarUrl, setNewAvatarUrl] = useState('');
+  const { sendRequest, loading, success, error } = useHttp(); 
 
-  // Fetch user data on mount
   useEffect(() => {
     const storedUserData = getUserData();
     if (storedUserData) {
       setUserData(storedUserData);
-      setNewAvatarUrl(storedUserData.avatar?.url || ''); // Set the current avatar URL as default
+      setNewAvatarUrl(storedUserData.avatar?.url || ''); 
     }
   }, []);
 
-  // Handle image change button click
-  const handleImageChangeClick = () => {
-    setIsEditing(true); // Show the input field for avatar URL
-  };
-
-  // Handle form submit for avatar URL change
   const handleAvatarSubmit = async () => {
     const token = userData?.accessToken;
-    const apiKey = userData?.apiKey;  // Retrieve the API key
-    const name = userData?.name; // Get the user's name to construct the URL
+    const apiKey = userData?.apiKey;
+    const name = userData?.name;
   
     if (!token || !apiKey || !name) {
       console.error('Access token, API key, or user name is missing');
       return;
     }
   
-    // Create payload for updating the avatar
     const updatedProfileData = {
       avatar: {
-        url: newAvatarUrl,  // Updated avatar URL
-        alt: `${userData.name}'s avatar`,  // Update the alt text
+        url: newAvatarUrl,
+        alt: `${userData.name}'s avatar`,
       },
     };
   
-    // Make the PUT request to update the user profile
-    await postData(`${API_BASE_URL}/profiles/${name}`, updatedProfileData, 'PUT', {
+    await sendRequest(`${API_BASE_URL}/holidaze/profiles/${name}`, 'PUT', updatedProfileData, {
       Authorization: `Bearer ${token}`,
-      'X-Noroff-API-Key': apiKey,  // Add the API key header
+      'X-Noroff-API-Key': apiKey,
     });
   
     if (success) {
-      // Update localStorage with the new user data
       const updatedUserData = {
         ...userData,
-        avatar: updatedProfileData.avatar, // Update avatar in localStorage
+        avatar: updatedProfileData.avatar,
       };
       saveUserData(updatedUserData);
-  
-      // Reload the page or update the profile view
-      window.location.reload();
+      window.location.reload(); // You can avoid this by updating the state directly
     }
   };
 
@@ -80,29 +67,21 @@ export const Profile = () => {
             </div>
           </div>
 
-          {/* Show input field if editing */}
-          {isEditing ? (
-            <div className="flex flex-col items-center">
-              <InputField
-                label="New Avatar URL"
-                type="text"
-                value={newAvatarUrl}
-                onChange={(e) => setNewAvatarUrl(e.target.value)}
-                placeholder="Enter new avatar URL"
-              />
-              <PrimaryButton onClick={handleAvatarSubmit} disabled={loading}>
-                {loading ? 'Updating...' : 'Save New Avatar'}
-              </PrimaryButton>
-              {error && <p className="text-red-500 mt-2">{error}</p>}
-              {success && <p className="text-green-500 mt-2">Avatar updated successfully!</p>}
-            </div>
-          ) : (
-            <div className="text-center">
-              <PrimaryButton onClick={handleImageChangeClick}>
-                Change Image
-              </PrimaryButton>
-            </div>
-          )}
+          {/* Input Field and Button Always Visible */}
+          <div className="flex flex-col items-center">
+            <InputField
+              label="New Avatar URL"
+              type="text"
+              value={newAvatarUrl}
+              onChange={(e) => setNewAvatarUrl(e.target.value)}
+              placeholder="Enter new avatar URL"
+            />
+            <PrimaryButton onClick={handleAvatarSubmit} disabled={loading}>
+              {loading ? 'Updating...' : 'Change Image'}
+            </PrimaryButton>
+            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {success && <p className="text-green-500 mt-2">Avatar updated successfully!</p>}
+          </div>
         </div>
 
         <h2 className="text-3xl font-medium mb-4 mt-6">My bookings</h2>
@@ -127,5 +106,3 @@ export const Profile = () => {
     </div>
   );
 };
-
-export default Profile;

@@ -3,7 +3,7 @@ import PrimaryButton from '../../components/PrimaryButton';
 import InputField from '../../components/InputField';
 import FormLayout from '../../components/FormLayout';
 import { useForm } from '../../components/hooks/useForm';
-import { usePost } from '../../components/hooks/usePost';
+import { useHttp } from '../../components/hooks/useHttp';
 import { API_URL } from '../../common/Constants';
 import { getUserData } from '../../utils/LocalStorage';
 
@@ -23,7 +23,7 @@ export const CreateVenue = () => {
     pets: false,
   });
 
-  const { postData, loading, error, success, data } = usePost();
+  const { sendRequest, loading, error, success, data } = useHttp();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,10 +57,9 @@ export const CreateVenue = () => {
       },
     };
   
-    postData(`${API_URL}`, venueData, {
+    sendRequest(`${API_URL}`, 'POST', venueData, {
       'Authorization': `Bearer ${token}`,
       'X-Noroff-API-Key': apiKey,
-      'Content-Type': 'application/json',
     });
   };
   

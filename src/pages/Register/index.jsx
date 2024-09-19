@@ -3,7 +3,7 @@ import PrimaryButton from '../../components/PrimaryButton';
 import InputField from '../../components/InputField';
 import FormLayout from '../../components/FormLayout';
 import { useForm } from '../../components/hooks/useForm';
-import { usePost } from '../../components/hooks/usePost';
+import { useHttp } from '../../components/hooks/useHttp';
 import { API_URL_REGISTER } from '../../common/Constants';
 
 export const Register = () => {
@@ -15,7 +15,7 @@ export const Register = () => {
     venueManager: false,
   });
 
-  const { postData, loading, error, success } = usePost();
+  const { sendRequest, loading, error, success } = useHttp();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ export const Register = () => {
       venueManager: formData.venueManager,
     };
 
-    postData(API_URL_REGISTER, registerData);
+    sendRequest(API_URL_REGISTER, 'POST', registerData);
   };
 
   return (
