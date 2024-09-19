@@ -1,9 +1,21 @@
-import PrimaryButton from '../../comonents/PrimaryButton';
-import { VenueCard } from '../../comonents/Cards/VenueCard';
+import PrimaryButton from '../../components/PrimaryButton';
+import React, { useState } from 'react'; 
+import { API_URL } from '../../common/Constants';
+import { useFetch } from '../../components/hooks/useFetch';
+import { VenueList } from '../../components/VenueList';
 
 export const Home = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const { data, isLoading, hasError } = useFetch(API_URL);
+
+  const filteredData = data && data.data 
+    ? data.data.filter(product => 
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
   return (
-    <>
+    <div className="bg-black min-h-screen"> {/* Added black background and full height */}
       <div className="relative">
         <img
           src="src/assets/hero-image.png"
@@ -22,21 +34,20 @@ export const Home = () => {
               type="text"
               placeholder="Search for your getaway..."
               className="flex-1 h-10 px-4 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <PrimaryButton className="ml-1">Search</PrimaryButton>
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-10 max-w-[1152px] w-full px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-          <VenueCard />
-          <VenueCard />
-          <VenueCard />
-          <VenueCard />
-          <VenueCard />
-          <VenueCard />
+      {isLoading && (
+        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white" role="status">
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
         </div>
-      </div>
-    </>
+      )}
+      {hasError && <p className="text-white">Error loading venues</p>} {/* Ensure text color is visible on black */}
+      {!isLoading && !hasError && <VenueList products={filteredData} />}
+    </div>
   );
 };

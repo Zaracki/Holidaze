@@ -1,5 +1,5 @@
 import React from 'react';
-import PrimaryButton from '../../comonents/PrimaryButton';
+import PrimaryButton from '../../components/PrimaryButton';
 
 export const Venue = () => {
   return (
@@ -35,7 +35,7 @@ export const Venue = () => {
                 className="w-6 h-6"
               />
               <div className="ml-4">
-                <h3 className="text-lg font-medium">WiFi Available</h3>
+                <h3 className="text-lg font-medium">WiFi</h3>
                 <p>High-speed internet throughout the property</p>
               </div>
             </div>
@@ -46,7 +46,7 @@ export const Venue = () => {
                 className="w-6 h-6"
               />
               <div className="ml-4">
-                <h3 className="text-lg font-medium">WiFi Available</h3>
+                <h3 className="text-lg font-medium">Pets</h3>
                 <p>High-speed internet throughout the property</p>
               </div>
             </div>
@@ -57,7 +57,7 @@ export const Venue = () => {
                 className="w-6 h-6"
               />
               <div className="ml-4">
-                <h3 className="text-lg font-medium">WiFi Available</h3>
+                <h3 className="text-lg font-medium">Parking</h3>
                 <p>High-speed internet throughout the property</p>
               </div>
             </div>
@@ -68,7 +68,7 @@ export const Venue = () => {
                 className="w-6 h-6"
               />
               <div className="ml-4">
-                <h3 className="text-lg font-medium">WiFi Available</h3>
+                <h3 className="text-lg font-medium">Breakfast</h3>
                 <p>High-speed internet throughout the property</p>
               </div>
             </div>

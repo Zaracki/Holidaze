@@ -1,78 +1,97 @@
-import React, { useState } from 'react';
-import PrimaryButton from '../../comonents/PrimaryButton';
+import React from 'react';
+import PrimaryButton from '../../components/PrimaryButton';
+import InputField from '../../components/InputField';
+import FormLayout from '../../components/FormLayout';
+import { useForm } from '../../components/hooks/useForm';
+import { usePost } from '../../components/hooks/usePost';
+import { API_URL_REGISTER } from '../../common/Constants';
 
 export const Register = () => {
-  const [isVenueManager, setIsVenueManager] = useState(false);
+  const { formData, handleInputChange } = useForm({
+    name: '',
+    email: '',
+    password: '',
+    imageUrl: '',
+    venueManager: false,
+  });
 
-  const handleCheckboxChange = () => {
-    setIsVenueManager(!isVenueManager);
+  const { postData, loading, error, success } = usePost();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const registerData = {
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+      avatar: {
+        url: formData.imageUrl,
+        alt: `${formData.name}'s avatar`,
+      },
+      venueManager: formData.venueManager,
+    };
+
+    postData(API_URL_REGISTER, registerData);
   };
 
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-[#141414]">
-        <div className="w-[632px] bg-[#282828] p-8">
-          <h1 className="text-3xl font-bold mb-6 text-white">Sign Up</h1>
-          <form className="space-y-4">
-            <div>
-              <h2 className="text-lg text-white font-semibold">Name</h2>
-              <input
-                type="text"
-                className="w-full p-2 mt-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div>
-              <h2 className="text-lg text-white font-semibold">Email</h2>
-              <input
-                type="email"
-                className="w-full p-2 mt-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your email"
-              />
-            </div>
-            <div>
-              <h2 className="text-lg text-white font-semibold">Password</h2>
-              <input
-                type="password"
-                className="w-full p-2 mt-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your password"
-              />
-            </div>
-            <div>
-              <h2 className="text-lg text-white font-semibold">Image URL</h2>
-              <input
-                type="text"
-                className="w-full p-2 mt-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter image URL"
-              />
-            </div>
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="venueManager"
-                checked={isVenueManager}
-                onChange={handleCheckboxChange}
-                className="h-4 w-4 text-blue-500 border-gray-300 rounded focus:ring-blue-500"
-              />
-              <label htmlFor="venueManager" className="ml-2 text-white">
-                I want to be a venue manager
-              </label>
-            </div>
-            <div className="mt-8">
-              <PrimaryButton className="ml-0 w-full" type="submit">
-                Create account
-              </PrimaryButton>
-            </div>
-            <p className="text-[#D2D2D2] mt-4">
-              Already have an account?{' '}
-              <a href="#" className="text-white hover:underline">
-                Sign in
-              </a>
-            </p>
-          </form>
+    <FormLayout title="Sign Up">
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <InputField
+          label="Name"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          placeholder="Enter your name"
+          required
+        />
+        <InputField
+          label="Email"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          placeholder="Enter your email"
+          required
+        />
+        <InputField
+          label="Password"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          placeholder="Enter your password"
+          required
+        />
+        <InputField
+          label="Image URL"
+          type="text"
+          name="imageUrl"
+          value={formData.imageUrl}
+          onChange={handleInputChange}
+          placeholder="Enter image URL"
+        />
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="venueManager"
+            name="venueManager"
+            checked={formData.venueManager}
+            onChange={handleInputChange}
+            className="h-4 w-4 text-blue-500 border-gray-300 rounded focus:ring-blue-500"
+          />
+          <label htmlFor="venueManager" className="ml-2 text-white">
+            I want to be a venue manager
+          </label>
         </div>
-      </div>
-    </>
+        <PrimaryButton className="ml-0 w-full" type="submit" disabled={loading}>
+          {loading ? 'Creating account...' : 'Create account'}
+        </PrimaryButton>
+        {error && <p className="text-red-500 mt-4">{error}</p>}
+        {success && <p className="text-green-500 mt-4">Registration successful!</p>}
+      </form>
+    </FormLayout>
   );
 };
 
