@@ -5,11 +5,11 @@ const USER_KEY = 'user';
  * @param {Object} userData - The user data to save (name, email, token, etc.)
  */
 export const saveUserData = (userData) => {
-  try {
-    localStorage.setItem(USER_KEY, JSON.stringify(userData));
-  } catch (error) {
-    console.error('Error saving user data to localStorage', error);
-  }
+  const storedUserData = {
+    ...userData,
+    apiKey: "4c3b4c45-833d-49e9-b967-c2a18a52c249", // Include the API key
+  };
+  localStorage.setItem(USER_KEY, JSON.stringify(storedUserData));
 };
 
 /**

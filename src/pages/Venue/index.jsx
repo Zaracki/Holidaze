@@ -20,9 +20,9 @@ export const Venue = () => {
     return <div>No data available</div>;
   }
 
-  // Access the venue data properly
-  const venue = data.data; 
-  const { name, description, media, price, owner, meta, location } = venue;
+  const venue = data.data;
+  const { name, description, media, price, owner, meta, location, bookings } = venue;
+
 
   return (
     <div className="bg-black min-h-screen flex flex-col items-center px-10">

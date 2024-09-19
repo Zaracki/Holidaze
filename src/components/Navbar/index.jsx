@@ -39,6 +39,11 @@ const Navbar = () => {
               Profile
             </Link>
           </li>
+          <li className="text-white hover:text-gray-400">
+            <Link to="/CreateVenue">
+              CreateVenue
+            </Link>
+          </li>
           <li>
             <Link to="/Login">
               <PrimaryButton>

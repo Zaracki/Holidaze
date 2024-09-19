@@ -7,6 +7,7 @@ import { Register } from "./pages/Register";
 import { Layout } from './components/Layout';
 import { Venue } from './pages/Venue';
 import { Profile } from './pages/Profile';
+import { CreateVenue } from './pages/CreateVenue';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Register" element={<Register />}/>
           <Route path="/Venue/:id" element={<Venue />}/>
           <Route path="/Profile" element={<Profile />}/>
+          <Route path="/CreateVenue" element={<CreateVenue />}/>
         </Route>
       </Routes>
     </>

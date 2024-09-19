@@ -1,6 +1,6 @@
 import PrimaryButton from '../../components/PrimaryButton';
 import React, { useState } from 'react'; 
-import { API_URL } from '../../common/Constants';
+import { API_URL, API_URL_CREATE_API_KEY } from '../../common/Constants';
 import { useFetch } from '../../components/hooks/useFetch';
 import { VenueList } from '../../components/VenueList';
 
@@ -15,7 +15,7 @@ export const Home = () => {
     : [];
 
   return (
-    <div className="bg-black min-h-screen"> {/* Added black background and full height */}
+    <div className="bg-black min-h-screen">
       <div className="relative">
         <img
           src="src/assets/hero-image.png"

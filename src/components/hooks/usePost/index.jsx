@@ -6,16 +6,17 @@ export const usePost = () => {
   const [success, setSuccess] = useState(false);
   const [data, setData] = useState(null);
 
-  const postData = async (url, body) => {
+  const postData = async (url, body, method = 'POST', headers = {}) => {
     setLoading(true);
     setError(null);
     setSuccess(false);
 
     try {
       const response = await fetch(url, {
-        method: 'POST',
+        method,
         headers: {
           'Content-Type': 'application/json',
+          ...headers,
         },
         body: JSON.stringify(body),
       });
