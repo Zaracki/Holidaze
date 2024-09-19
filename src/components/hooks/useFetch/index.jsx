@@ -29,3 +29,5 @@ export function useFetch(url) {
 
   return { data, isLoading, hasError };
 };
+
+export default useFetch;

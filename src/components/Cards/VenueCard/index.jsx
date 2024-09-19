@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 
 const VenueCard = ({ data }) => {
-  const { name, price, rating } = data;
+  const { id, name, price, rating } = data;
 
   const truncateText = (text, maxLength) => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
 
   return (
-    <Link to="/Venue">
+    <Link to={`/Venue/${id}`}>
       <div className="w-[331px] h-[339px] overflow-hidden relative bg-white">
         <div className="h-[233px] w-full">
           <img
