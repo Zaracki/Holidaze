@@ -46,7 +46,7 @@ export const Profile = () => {
         avatar: updatedProfileData.avatar,
       };
       saveUserData(updatedUserData);
-      window.location.reload(); // You can avoid this by updating the state directly
+      window.location.reload();
     }
   };
 
@@ -67,7 +67,6 @@ export const Profile = () => {
             </div>
           </div>
 
-          {/* Input Field and Button Always Visible */}
           <div className="flex flex-col items-center">
             <InputField
               label="New Avatar URL"
